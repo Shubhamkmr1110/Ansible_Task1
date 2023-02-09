@@ -12,9 +12,20 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+  - task: Initial Setup
+  inputs:
+    targetType: 'inline'
+    script: |
+      sudo apt-get update
+      sudo apt-get install software-properties-common
+      sudo apt-add-repository --yes --update ppa:ansible/ansible
+      sudo apt-get install ansible
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      ansible-playbook -i hosts inventory.yaml
 
-- script: |
-    echo pip install ansible-playbook
-    echo ansible-playbook -i hosts inventory.yaml
+- script: |    
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
