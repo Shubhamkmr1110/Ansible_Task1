@@ -1,0 +1,23 @@
+
+---
+  - name: "Playing with Ansible and Git"
+    hosts: localhost
+    connection: local 
+    tasks:
+
+    - name: "just execute a ls -lrt command"
+      shell: "ls -lrt"
+      register: "output"      
+    - name: Ping my hosts
+      ansible.builtin.ping:
+    - name: Print message
+      ansible.builtin.debug:
+       msg: Hello world
+    - name: Running python script
+      command: python3 /home/shubham/ansible_task/hello.py
+      register: result
+    - name: Printing output of python script
+      debug:
+        var: result
+
+    - debug: var=output.stdout_lines
