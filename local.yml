@@ -8,7 +8,10 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+resources:
+  pipelines:
+    -pipeline: Local
+  
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
