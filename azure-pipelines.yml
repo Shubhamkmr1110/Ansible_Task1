@@ -14,6 +14,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
+    echo pip install ansible-playbook
+    echo ansible-playbook -i hosts inventory.yaml
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
